@@ -18,11 +18,16 @@ export const Secondary: Story = () => <Button variant="secondary">Secondary</But
 export const Danger: Story = () => <Button variant="danger">Danger</Button>;
 
 
-export const PrimaryA = {
+export const PrimaryA: StoryObj<typeof Button> = {
     args: {
         variant: 'primary',
-        children: 'Primary Args',
-    }
+        children: 'Primary Args with decorators',
+    },
+    // Works like wrapper in React-testing-library
+    decorators: [
+        (Story) => <div className='bg-gray-200 p-4 flex justify-start items-start flex-col'>
+            <Story />
+        </div>]
 };
 
 export const SecondaryA = {
