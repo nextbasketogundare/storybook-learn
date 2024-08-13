@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
 import TextBox from "./Input";
 
 const meta = {
@@ -8,8 +8,10 @@ const meta = {
 
 export default meta;
 
-export const Small = () => <TextBox size="sm" name="search" placeholder="Search" />;
-export const Medium = () => <TextBox size="md" name="search" placeholder="Search" />;
-export const Large = () => <TextBox size="lg" name="search" placeholder="Search" />;
+type Story = StoryObj<typeof TextBox> & (() => JSX.Element);
 
-Small.storyName = 'Small Doctor';
+export const Small:Story = () => <TextBox size="sm" name="search" placeholder="Search..." />;
+export const Medium:Story = () => <TextBox size="md" name="search" placeholder="Search..." />;
+export const Large:Story = () => <TextBox size="lg" name="search" placeholder="Search..." />;
+
+Small.storyName = 'Smallie';
