@@ -8,6 +8,12 @@ export const ActionsData = {
     onArchiveTask: fn()
 }
 
+export const TasksData = [
+    { id: '1', title: 'Test Task 1', state: TaskState.TASK_INBOX },
+    { id: '2', title: 'Test Task 2', state: TaskState.TASK_PINNED },
+    { id: '3', title: 'Test Task 3', state: TaskState.TASK_ARCHIVED },
+]
+
 const meta: Meta<typeof TaskList> = {
     title: 'Task/TaskList',
     component: TaskList,
@@ -30,6 +36,23 @@ export default meta;
 
 type Story = StoryObj<typeof TaskList>;
 
+export const Empty: Story = {
+    args: {
+        loading: false,
+        tasks: []
+    }
+}
+
+export const Loading: Story = {
+    args: {
+        loading: true,
+        tasks: []
+    }
+};
+
 export const Tasks: Story = {
-    args: {}
+    args: {
+        loading: false,
+        tasks: TasksData
+    }
 };

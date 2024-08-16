@@ -5,14 +5,16 @@ export enum TaskState {
     TASK_INBOX = 'TASK_INBOX',
     TASK_PINNED = 'TASK_PINNED',
     TASK_ARCHIVED = 'TASK_ARCHIVED'
-}
+};
+
+export interface ITaskType {
+    id: string;
+    title: string;
+    state: TaskState
+};
 
 interface ITask {
-    task: {
-        id: string;
-        title: string;
-        state: TaskState
-    },
+    task: ITaskType,
     onArchiveTask: (id: string) => void;
     onPinTask: (id: string) => void;
 }
@@ -29,6 +31,7 @@ export default function Task({ task, onArchiveTask, onPinTask }: ITask) {
                             id="completed"
                             className='cursor-pointer'
                             checked={task.state === TaskState.TASK_ARCHIVED}
+                            onChange={() => onArchiveTask(task.id)}
                         />
                     </label>
 
@@ -51,7 +54,9 @@ export default function Task({ task, onArchiveTask, onPinTask }: ITask) {
                 {task.state !== TaskState.TASK_ARCHIVED && (
                     <button
                         aria-label='Pin task'
-                        className={clsx('w-8 flex justify-center bg-transparent')}>
+                        className={clsx('w-8 flex justify-center bg-transparent')}
+                        onClick={() => onPinTask(task.id)}
+                        >
                         <Star size="18px" className={clsx({
                             "fill-yellow-500 text-yellow-500": task.state === TaskState.TASK_PINNED
                         })} />
