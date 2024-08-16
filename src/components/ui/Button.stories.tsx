@@ -1,3 +1,5 @@
+
+// import ChakraThemeProvider from '../../../theme/ThemeProvider';
 import { Button } from './Button';
 import { Meta, StoryObj } from '@storybook/react';
 
@@ -30,11 +32,17 @@ export const PrimaryA: StoryObj<typeof Button> = {
         </div>]
 };
 
-export const SecondaryA = {
+export const SecondaryA: StoryObj<typeof Button> = {
     args: {
         variant: 'secondary',
         children: 'Secondary Args',
-    }
+    },
+    // decorators: [(Story) => (<ChakraThemeProvider>
+    //     <Flex justify="center" align="center">
+    //         <Story />
+    //     </Flex>
+    // </ChakraThemeProvider>)
+    // ]
 };
 
 export const DangerA = {

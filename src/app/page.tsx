@@ -1,14 +1,12 @@
-import { Button } from "@/components/ui/Button";
-import TextBox from "@/components/ui/Input";
+import Task, { TaskState } from "@/components/ui/Task";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="flex flex-col gap-5">
-       <Button variant="danger">
-          Get Started
-        </Button>
-        <TextBox size="md" name="search" placeholder="Search" />
+      <div className="w-[600px] mx-auto bg-blue-400 flex justify-center py-8 rounded-md px-5">
+       <Task 
+       task={{ id: '1', title: 'Test Task', state: TaskState.TASK_INBOX }} 
+       onArchiveTask={() => {}} onPinTask={() => {}} />
       </div>
 
       <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
